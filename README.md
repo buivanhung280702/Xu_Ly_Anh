@@ -1,7 +1,7 @@
-# Xu_Ly_Anh
-# 1. Am ban
-# 2. Thresholding
-# 3. Logarit
-# 4. Exponential
-# 5. Lam min anh
-# 6. Midpoint Filter
+# Xu_Ly_Anh bao gồm các thuật toán sau: 
+ 1. Âm bản
+ 2. Biến đổi phân ngưỡng
+ 3. Biến đổi logarit
+ 4. Biến đổi hàm mũ 
+ 5. Bộ lọc trung vị làm mịn ảnh
+ 6. Midpoint Filter
