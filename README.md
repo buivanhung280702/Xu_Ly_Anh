@@ -1,4 +1,4 @@
-#BTL Xử lý ảnh _Bùi Văn Hưng- B20DCDT093
+# BTL Xử lý ảnh _Bùi Văn Hưng- B20DCDT093
 # Xu_Ly_Anh bao gồm các thuật toán sau: 
  1. Âm bản
  2. Biến đổi phân ngưỡng
