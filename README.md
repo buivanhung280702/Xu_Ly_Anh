@@ -6,3 +6,6 @@
  4. Biến đổi hàm mũ 
  5. Bộ lọc trung vị làm mịn ảnh
  6. Midpoint Filter
+ 7. Canny
+ 8. Robert
+    
