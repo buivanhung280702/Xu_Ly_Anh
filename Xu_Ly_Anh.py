@@ -33,6 +33,14 @@ class ImageProcessor:
         self.btn_process_midpoint = Button(root, text="Midpoint Filter", command=self.process_midpoint, state="disabled")
         self.btn_process_midpoint.pack()
 
+        self.btn_process_canny = Button(root, text="Áp dụng Canny", command=self.process_canny, state="disabled")
+        self.btn_process_canny.pack()
+
+        self.btn_process_roberts = Button(root, text="Áp dụng Roberts", command=self.process_roberts, state="disabled")
+        self.btn_process_roberts.pack()
+
+
+        
         self.image_path = None
         self.original_image = None
         self.processed_image = None
@@ -59,6 +67,8 @@ class ImageProcessor:
             self.btn_process_exponential["state"] = "normal"
             self.btn_smooth_image["state"] = "normal"
             self.btn_process_midpoint["state"] = "normal"
+            self.btn_process_canny["state"] = "normal"
+            self.btn_process_roberts["state"] = "normal"
 
     def process_negative(self):
         if self.image_path:
@@ -146,8 +156,37 @@ class ImageProcessor:
 
             self.processed_image.thumbnail((500, 500))
             self.photo = ImageTk.PhotoImage(self.processed_image)
-            self.canvas.create_image(0, 0, anchor="nw", image=self.photo)        
+            self.canvas.create_image(0, 0, anchor="nw", image=self.photo) 
+
+    def process_canny(self):
+            if self.image_path:
+                if not self.is_negative:
+                    gray_image = self.processed_image.convert("L")
+                    canny_image = ImageCanny.canny(gray_image)
+    
+                    self.processed_image = canny_image
+                    self.is_negative = True
+                else:
+                    self.processed_image = self.original_image
+                    self.is_negative = False
+    
+                self.processed_image.thumbnail((500, 500))
+                self.photo = ImageTk.PhotoImage(self.processed_image)
+                self.canvas.create_image(0, 0, anchor="nw", image=self.photo)
+
+        def process_roberts(self):
+            if self.image_path:
+                gray_image = self.processed_image.convert("L")
+                roberts_image = gray_image.filter(ImageFilter.FIND_EDGES)  # Áp dụng Roberts
+        
+                self.processed_image = roberts_image
+                self.is_negative = False
+        
+                self.processed_image.thumbnail((500, 500))
+                self.photo = ImageTk.PhotoImage(self.processed_image)
+                self.canvas.create_image(0, 0, anchor="nw", image=self.photo)
             
+                
     
 
 # Create an object of the ImageProcessor class
